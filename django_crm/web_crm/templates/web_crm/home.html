@@ -1,7 +1,40 @@
 {% extends 'web_crm/base.html' %}
 {% block content %}
   {% if user.is_authenticated %}
-    <h1>Login Successful</h1>
+    {% if records %}
+      <div class="table-responsive mt-5">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr class="text-center">
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in records %}
+              <tr class="text-center">
+                <td>{{ record.id }}</td>
+                <td>{{ record.first_name }}</td>
+                <td>{{ record.last_name }}</td>
+                <td>{{ record.email }}</td>
+                <td>{{ record.phone_number }}</td>
+                <td>{{ record.address }}</td>
+                <td>{{ record.city }}</td>
+                <td>{{ record.state }}</td>
+                <td><a href="{% url 'customer_record' record.id %}" class="btn btn-primary">View</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
   {% else %}
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
       <div class="card shadow" style="width: 400px;">

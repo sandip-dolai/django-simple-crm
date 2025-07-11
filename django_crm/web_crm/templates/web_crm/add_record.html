@@ -1,0 +1,14 @@
+{% extends 'web_crm/base.html' %}
+{% block content %}
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow" style="width: 400px;">
+      <div class="card-body">
+        <form method="post" action="{% url 'add_record' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-success">Add Record</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
