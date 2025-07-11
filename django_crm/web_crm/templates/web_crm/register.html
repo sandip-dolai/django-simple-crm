@@ -1,0 +1,15 @@
+{% extends 'web_crm/base.html' %}
+{% block content %}
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow" style="width: 400px;">
+      <div class="card-body">
+        <form method="post" action="{% url 'register' %}">
+          {% csrf_token %}
+          <h4 class="card-title text-center">Registration</h4>
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-success">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

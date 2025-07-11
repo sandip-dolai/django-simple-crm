@@ -1,0 +1,26 @@
+{% extends 'web_crm/base.html' %}
+{% block content %}
+  {% if user.is_authenticated %}
+    <h1>Login Successful</h1>
+  {% else %}
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="card shadow" style="width: 400px;">
+        <div class="card-body">
+          <h4 class="card-title text-center">User Login</h4>
+          <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
